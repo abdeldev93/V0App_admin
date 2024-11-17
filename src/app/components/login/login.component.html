@@ -1,0 +1,29 @@
+<!-- src/app/login/login.component.html -->
+<div class="login-container">
+    <mat-card class="login-card">
+      <h2 class="login-title">Log In</h2>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+            Please enter a valid user
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+  
+        <button mat-raised-button color="warn" type="submit" [disabled]="loginForm.invalid" class="login-button">
+          Login
+        </button>
+      </form>
+    </mat-card>
+  </div>
+  
